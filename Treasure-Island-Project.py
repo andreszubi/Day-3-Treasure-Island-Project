@@ -25,23 +25,22 @@ print("Your mission is to find the treasure.")
 print("You're at a crossroad. Where do you want to go? Type 'left' or 'right'")
 choice1 = input().lower()
 if choice1 == "left":
-    print("You have crossed a path, which leads you to a beautiful lake surrounded by golden glowing trees with beautiful canopies.\n"
+    choice2 =  input("You have crossed a path, which leads you to a beautiful lake surrounded by golden glowing trees with beautiful canopies.\n"
           "You quickly notice that there is an island in the middle of the lake.\n"
           "At the middle of the island you spot huge house with shining lights gleaming through the windows.\n"
           "You also see that there is a boat to get to the island, however it is very slow.\n"
           "Type 'wait' to wait for the boat to get across to the island\n"
-          "Or type 'swim' to swim across to get to the island quickly.")
-    choice2 = input().lower()
+          "Or type 'swim' to swim across to get to the island quickly.\n").lower()
+    
     if choice2 == "swim":
         print("You slowly get into the water and start swimming towards the island.\n"
               "Halfway through, a pack of hungry piranhas spot you and attack you viciously.")
         print(" GAME OVER!")
     if choice2 == "wait":
-        print("Slowly but surely, the boat takes you safely to the island.\n"
+        choice3 =  input("Slowly but surely, the boat takes you safely to the island.\n"
               "You go ahead and step into the house.\n"
               "You see that there are 3 doors. One red, one yellow and one blue.\n"
-              "Which colored door will you choose? Type 'red', 'yellow' or 'blue'.")
-        choice3 = input().lower()
+              "Which colored door will you choose? Type 'red', 'yellow' or 'blue'.\n").lower()
         if choice3 == "red":
             print("You have stepped into a room with a chimera!\n"
                   "The beast quickly spots you and kills you with its fiery breath.")
