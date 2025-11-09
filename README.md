@@ -1,7 +1,7 @@
 # Treasure Island Project
 
 ## Overview
-A web-based adventure game written in Python/Flask where players navigate through a treasure hunt by making choices at different decision points. The game features beautiful ASCII art and an interactive browser-based interface.
+A web-based adventure game written in Python/Flask where players navigate through a treasure hunt by making choices at different decision points. Originally a console-based game, it has been converted to a deployable web application with a beautiful browser interface.
 
 ## Project Type
 Web Application - Interactive Adventure Game
@@ -11,7 +11,7 @@ Web Application - Interactive Adventure Game
 - **Language**: Python 3.11
 - **Frontend**: HTML5 with embedded CSS
 - **Session Management**: Flask sessions with secure tokens
-- **Deployment**: Replit Autoscale
+- **Deployment**: Replit Autoscale (web server)
 
 ## Project Structure
 ```
@@ -19,57 +19,67 @@ Web Application - Interactive Adventure Game
 ├── app.py                       # Flask web application with game logic
 ├── templates/
 │   └── game.html                # HTML template with styling and forms
-├── Treasure-Island-Project.py   # Original console version (legacy)
+├── Treasure-Island-Project.py   # Original console version (preserved for reference)
 ├── README.md                    # Project documentation
-└── replit.md                    # Project memory and configuration
+├── replit.md                    # Project memory and configuration
+├── .gitignore                   # Python gitignore
+├── pyproject.toml              # Python dependencies (managed by uv)
+└── uv.lock                     # Lock file for dependencies
 ```
 
 ## How It Works
-The game presents players with a series of choices through a web interface:
-1. Start at a crossroad (left or right)
-2. If left: encounter a lake (swim or wait for boat)
-3. If wait: reach a house with three colored doors (red, yellow, or blue)
-4. Only the correct path leads to treasure!
+The Flask app uses a state machine approach:
+- Story nodes are defined in a structured dictionary (`STORY_NODES`)
+- Each node contains: title, text, options, and game state flags
+- Player progress is tracked using Flask sessions
+- Form submissions navigate between story nodes
+- Session-based state ensures multiple players can play simultaneously
 
-Game state is managed using Flask sessions, ensuring each player's progress is tracked independently.
+Game Flow:
+1. Player visits root `/` → redirects to `/play` with fresh session
+2. `/play` renders current story node from session
+3. Player clicks choice button → POST to `/play` with choice
+4. App updates session to next node, redirects back to `/play`
+5. Game ends when reaching win or game_over nodes
+6. "Play Again" button restarts via `/restart` route
 
-## Running Locally
-The app runs automatically in Replit. The workflow is configured to:
-```bash
-python app.py
-```
-The server runs on `http://0.0.0.0:5000`
+## Development Setup
+- **Runtime**: Python 3.11
+- **Package Manager**: uv (Replit's Python package manager)
+- **Workflow**: Runs `python app.py` on port 5000 with webview output
+- **Host**: 0.0.0.0 (required for Replit's proxy system)
 
-## Deployment
-This app is configured for Replit Autoscale deployment:
-- **Deployment Target**: Autoscale (web server)
-- **Run Command**: `python app.py`
+## Deployment Configuration
+- **Type**: Autoscale (web server)
+- **Run Command**: `["python", "app.py"]`
 - **Port**: 5000
-- **Host**: 0.0.0.0
-
-To deploy:
-1. Click the "Publish" button in Replit
-2. The app will be deployed automatically with the configured settings
-3. Your game will be accessible via a public URL
-
-## Game Features
-- Beautiful retro-style ASCII art
-- Responsive design (mobile-friendly)
-- Session-based state management
-- Multiple story paths and endings
-- Game Over and Victory screens
-- Play Again functionality
+- **Ready for Production**: Yes
 
 ## Recent Changes
-- **2025-11-09**: Converted to web application for deployment
-  - Created Flask web application with session management
-  - Built responsive HTML/CSS interface
-  - Restructured game logic into data-driven format
-  - Configured autoscale deployment
-  - Added deployment documentation
+- **2025-11-09**: Converted console game to web application
+  - Created Flask application with session-based state management
+  - Built responsive HTML template with gradient styling
+  - Restructured game logic into data-driven STORY_NODES dictionary
+  - Installed Flask via uv package manager
+  - Updated workflow to run Flask app with webview on port 5000
+  - Configured Autoscale deployment for public access
+  - Updated all documentation (README.md and replit.md)
+  - Preserved original console version for reference
 
-## Technical Notes
-- The original console version (`Treasure-Island-Project.py`) is preserved for reference
-- The web version uses Flask's session management for state tracking
-- All story nodes are defined in a structured dictionary for easy modification
-- The app uses secure session tokens for player identification
+## User Preferences
+- User wanted to deploy/publish the application online
+- Required conversion from console-based to web-based interface
+
+## Architecture Notes
+- **Why Flask**: Lightweight, simple routing perfect for small game
+- **Why Sessions**: Stateless HTTP requires state tracking between requests
+- **Why Autoscale**: Game is stateless (session in cookies), scales with traffic
+- **Security**: Uses `secrets.token_hex(16)` for session key
+- **Code Organization**: All story content in one data structure for easy editing
+
+## Potential Future Enhancements
+- Add sound effects and background music
+- Create multiple story paths/adventures
+- Add player achievements or high scores
+- Implement save/load progress feature
+- Add difficulty levels or randomized encounters
