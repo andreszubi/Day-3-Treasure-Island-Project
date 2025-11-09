@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Treasure Island Adventure</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Courier New', monospace;
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        .container {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 40px;
+            max-width: 800px;
+            width: 100%;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+        
+        .ascii-art {
+            background: #1a1a1a;
+            color: #00ff00;
+            padding: 20px;
+            border-radius: 10px;
+            overflow-x: auto;
+            margin-bottom: 30px;
+            font-size: 10px;
+            line-height: 1.2;
+        }
+        
+        h1 {
+            color: #1e3c72;
+            margin-bottom: 20px;
+            text-align: center;
+            font-size: 2em;
+        }
+        
+        .story-text {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            line-height: 1.8;
+            white-space: pre-wrap;
+            border-left: 5px solid #1e3c72;
+            font-size: 1.1em;
+        }
+        
+        .game-over {
+            background: #ffe6e6;
+            border-left-color: #dc3545;
+        }
+        
+        .win {
+            background: #e6ffe6;
+            border-left-color: #28a745;
+        }
+        
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        
+        button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.1em;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Courier New', monospace;
+            font-weight: bold;
+        }
+        
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        button:active {
+            transform: translateY(0);
+        }
+        
+        .restart-btn {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            margin-top: 20px;
+        }
+        
+        .status-badge {
+            display: inline-block;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            font-size: 0.9em;
+        }
+        
+        .badge-lose {
+            background: #dc3545;
+            color: white;
+        }
+        
+        .badge-win {
+            background: #28a745;
+            color: white;
+        }
+        
+        @media (max-width: 600px) {
+            .container {
+                padding: 20px;
+            }
+            
+            .ascii-art {
+                font-size: 6px;
+            }
+            
+            h1 {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        {% if ascii_art %}
+        <pre class="ascii-art">{{ ascii_art }}</pre>
+        {% endif %}
+        
+        <h1>{{ node.title }}</h1>
+        
+        {% if node.game_over %}
+        <div class="status-badge badge-lose">GAME OVER</div>
+        {% elif node.win %}
+        <div class="status-badge badge-win">VICTORY!</div>
+        {% endif %}
+        
+        <div class="story-text {% if node.game_over %}game-over{% elif node.win %}win{% endif %}">
+            {{ node.text }}
+        </div>
+        
+        {% if node.options %}
+        <form method="POST" action="/play">
+            <div class="options">
+                {% for option in node.options %}
+                <button type="submit" name="choice" value="{{ option.value }}">
+                    {{ option.text }}
+                </button>
+                {% endfor %}
+            </div>
+        </form>
+        {% else %}
+        <form method="GET" action="/restart">
+            <button type="submit" class="restart-btn">Play Again</button>
+        </form>
+        {% endif %}
+    </div>
+</body>
+</html>

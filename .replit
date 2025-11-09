@@ -21,13 +21,22 @@ args = "run-treasure-island"
 name = "run-treasure-island"
 author = "agent"
 
+[workflows.workflow.metadata]
+outputType = "webview"
+
 [[workflows.workflow.tasks]]
 task = "shell.exec"
-args = "python Treasure-Island-Project.py"
-
-[workflows.workflow.metadata]
-outputType = "console"
+args = "python app.py"
+waitForPort = 5000
 
 [deployment]
-deploymentTarget = "vm"
-run = ["python", "Treasure-Island-Project.py"]
+deploymentTarget = "autoscale"
+run = ["python", "app.py"]
+
+[[ports]]
+localPort = 5000
+externalPort = 80
+
+[[ports]]
+localPort = 37033
+externalPort = 3000
