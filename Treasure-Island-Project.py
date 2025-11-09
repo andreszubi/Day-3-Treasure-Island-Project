@@ -27,7 +27,7 @@ choice1 = input().lower()
 if choice1 == "left":
     choice2 =  input("You have crossed a path, which leads you to a beautiful lake surrounded by golden glowing trees with beautiful canopies.\n"
           "You quickly notice that there is an island in the middle of the lake.\n"
-          "At the middle of the island you spot huge house with shining lights gleaming through the windows.\n"
+          "At the middle of the island you spot a huge house with shining lights gleaming through the windows.\n"
           "You also see that there is a boat to get to the island, however it is very slow.\n"
           "Type 'wait' to wait for the boat to get across to the island\n"
           "Or type 'swim' to swim across to get to the island quickly.\n").lower()

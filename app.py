@@ -40,7 +40,7 @@ STORY_NODES = {
     },
     'lake': {
         'title': 'The Beautiful Lake',
-        'text': "You have crossed a path, which leads you to a beautiful lake surrounded by golden glowing trees with beautiful canopies.\nYou quickly notice that there is an island in the middle of the lake.\nAt the middle of the island you spot huge house with shining lights gleaming through the windows.\nYou also see that there is a boat to get to the island, however it is very slow.\nWhat will you do?",
+        'text': "You have crossed a path, which leads you to a beautiful lake surrounded by golden glowing trees with beautiful canopies.\nYou quickly notice that there is an island in the middle of the lake.\nAt the middle of the island you spot a huge house with shining lights gleaming through the windows.\nYou also see that there is a boat to get to the island, however it is very slow.\nWhat will you do?",
         'options': [
             {'text': 'Wait for the boat', 'value': 'wait', 'next': 'house'},
             {'text': 'Swim across', 'value': 'swim', 'next': 'game_over_piranhas'}
