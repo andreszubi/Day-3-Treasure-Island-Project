@@ -16,7 +16,6 @@ Terminal User Interface (TUI) - Console Application
 .
 ├── Treasure-Island-Project.py  # Main game file with interactive story logic
 ├── README.MD                    # Project documentation
-└── replit.md                    # Project memory and configuration
 ```
 
 ## How It Works
