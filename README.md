@@ -1,7 +1,7 @@
 # Treasure Island Project
 
 ## Overview
-A web-based adventure game written in Python/Flask where players navigate through a treasure hunt by making choices at different decision points. Originally a console-based game, it has been converted to a deployable web application with a beautiful browser interface.
+A web-based adventure game written in Python/Flask where players navigate through a treasure hunt by making choices at different decision points. Originally a terminal ID console-based game, it has been converted to a deployable web application with a beautiful browser interface.
 
 ## Project Type
 Web Application - Interactive Adventure Game
@@ -47,39 +47,10 @@ Game Flow:
 - **Runtime**: Python 3.11
 - **Package Manager**: uv (Replit's Python package manager)
 - **Workflow**: Runs `python app.py` on port 5000 with webview output
-- **Host**: 0.0.0.0 (required for Replit's proxy system)
+- **Host**: 0.0.0.0 
 
 ## Deployment Configuration
 - **Type**: Autoscale (web server)
 - **Run Command**: `["python", "app.py"]`
 - **Port**: 5000
 - **Ready for Production**: Yes
-
-## Recent Changes
-- **2025-11-09**: Converted console game to web application
-  - Created Flask application with session-based state management
-  - Built responsive HTML template with gradient styling
-  - Restructured game logic into data-driven STORY_NODES dictionary
-  - Installed Flask via uv package manager
-  - Updated workflow to run Flask app with webview on port 5000
-  - Configured Autoscale deployment for public access
-  - Updated all documentation (README.md and replit.md)
-  - Preserved original console version for reference
-
-## User Preferences
-- User wanted to deploy/publish the application online
-- Required conversion from console-based to web-based interface
-
-## Architecture Notes
-- **Why Flask**: Lightweight, simple routing perfect for small game
-- **Why Sessions**: Stateless HTTP requires state tracking between requests
-- **Why Autoscale**: Game is stateless (session in cookies), scales with traffic
-- **Security**: Uses `secrets.token_hex(16)` for session key
-- **Code Organization**: All story content in one data structure for easy editing
-
-## Potential Future Enhancements
-- Add sound effects and background music
-- Create multiple story paths/adventures
-- Add player achievements or high scores
-- Implement save/load progress feature
-- Add difficulty levels or randomized encounters
