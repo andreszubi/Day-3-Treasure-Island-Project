@@ -27,3 +27,7 @@ args = "python Treasure-Island-Project.py"
 
 [workflows.workflow.metadata]
 outputType = "console"
+
+[deployment]
+deploymentTarget = "vm"
+run = ["python", "Treasure-Island-Project.py"]
