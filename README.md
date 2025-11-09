@@ -24,7 +24,6 @@ Web Application - Interactive Adventure Game
 │   └── game.html                # HTML template with styling and forms
 ├── Treasure-Island-Project.py   # Original console version (preserved for reference)
 ├── README.md                    # Project documentation
-├── replit.md                    # Project memory and configuration
 ├── .gitignore                   # Python gitignore
 ├── pyproject.toml              # Python dependencies (managed by uv)
 └── uv.lock                     # Lock file for dependencies
