@@ -3,7 +3,8 @@
 ## Overview
 A web-based adventure game written in Python/Flask where players navigate through a treasure hunt by making choices at different decision points. Originally a terminal ID console-based game, it has been converted to a deployable web application with a beautiful browser interface.
 
-## Link to proj
+## Link to project:
+- https://day-3-treasure-island-project-andreszubi.replit.app
 
 ## Project Type
 Web Application - Interactive Adventure Game
