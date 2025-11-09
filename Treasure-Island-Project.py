@@ -62,3 +62,6 @@ if choice1 == "right":
     print("You crossed the road and arrived at a dark cave.\n"
           "As you enter the cave, you are greeted by a hungry troll who gobbles you up in one bite.")
     print(" GAME OVER!")
+else:
+    print(" You have not chosen a path. A magical force has struck you and you are now a statue.")
+    print(" GAME OVER!")
