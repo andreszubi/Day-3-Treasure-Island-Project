@@ -132,7 +132,7 @@ def play():
     
     return render_template('game.html', 
                          node=current_node,
-                         ascii_art=TREASURE_ASCII if current_node_key == 'start' else None)
+                         current_node_key=current_node_key)
 
 @app.route('/restart')
 def restart():
@@ -141,4 +141,4 @@ def restart():
     return redirect(url_for('play'))
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000, debug=False)
+    app.run(host='0.0.0.0', port=5000, debug=True)
